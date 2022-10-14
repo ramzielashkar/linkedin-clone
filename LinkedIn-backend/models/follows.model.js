@@ -11,6 +11,7 @@ const followSchema = new mongoose.Schema({
     },
 
     company_id:{
+        required :'company is required',
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
@@ -19,4 +20,4 @@ const followSchema = new mongoose.Schema({
 
 const Follow = mongoose.model('Follow', followSchema);
 
-module.exports = Job;
+module.exports = Follow;
