@@ -17,6 +17,7 @@ const jobSchema = new mongoose.Schema({
         required: 'Type is required'
     },
     company_id:{
+        required :'company is required',
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
