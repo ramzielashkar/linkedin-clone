@@ -1,6 +1,7 @@
 const User = require("../models/users.model");
 const Job = require("../models/jobs.model");
 const { Application } = require("../models/application.model");
+const Follow = require("../models/follows.model");
 
 //function to apply to a job
 const applyToJob = async(req, res) => {
@@ -20,6 +21,25 @@ const applyToJob = async(req, res) => {
     })
 }
 
+// function to follow a company
+const followCompany = async (req, res) => {
+    const {name} = req.params;
+    const company = await User.findOne({name}).lean();
+    try{
+        const follow = new Follow();
+        follow.user_id = req.user.id;
+        follow.company_id = company._id;
+
+        await follow.save();
+        res.json(follow)
+    }catch(err){
+        res.status(400).json({
+            message: err.message,
+        })
+    }
+}
+
 module.exports = {
-    applyToJob
+    applyToJob,
+    followCompany
 }
