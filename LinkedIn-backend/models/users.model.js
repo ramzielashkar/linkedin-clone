@@ -19,7 +19,8 @@ const userSchema = new mongoose.Schema({
     },
     type :{
         type: String,
-        required : 'user type is required' 
+        required : 'user type is required',
+        enum: ['user', 'company']
     },
     bio:{
         type: String,
