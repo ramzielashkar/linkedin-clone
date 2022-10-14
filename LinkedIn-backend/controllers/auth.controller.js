@@ -34,7 +34,13 @@ const signup = async (req, res)=>{
         user.password = await bcrypt.hash(password, 10);
 
         await user.save();
-        res.json(user)
+        const token = jwt.sign({email: user.email, name: user.name}, process.env.JWT_SECRET_KEY, {
+            expiresIn: '1h'
+        });
+        res.json({
+            "user": user,
+            "token" : token
+        })
     }catch(err){
         res.status(400).json({
             message: err.message
