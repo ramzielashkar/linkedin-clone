@@ -1,8 +1,8 @@
 const Job = require("../models/jobs.model");
 const User = require("../models/users.model");
 
-// function to add a job
 
+// function to add a job
 const addJob = async (req, res) =>{
     const {name, description, type} = req.body;
     try{
@@ -21,6 +21,14 @@ const addJob = async (req, res) =>{
     }
 }
 
+// function to get company jobs
+const getJobs = async (req, res) =>{
+    const company_id = req.user.id;
+    const jobs = await Job.find({company_id});
+    res.json(jobs);
+}
+
 module.exports = {
-    addJob
+    addJob, 
+    getJobs
 }
