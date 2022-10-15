@@ -3,14 +3,16 @@ const Job = require("../models/jobs.model");
 const { Application } = require("../models/application.model");
 const Follow = require("../models/follows.model");
 const fs = require("fs");
-const mime = require('mime');
+const base64 = require('base64topdf');
 
 //function to apply to a job
 const applyToJob = async(req, res) => {
-    const {details, job_id} = req.body;
-    const application = {
+    const { job_id, details } = req.body;
+    const filename = `${req.user.id}.docx`;
+
+   const application = {
         details,
-        "user_id" : req.user.id
+        "id" : req.user.id
     }
     Job.findById(job_id, (error, result)=> {
         try {
