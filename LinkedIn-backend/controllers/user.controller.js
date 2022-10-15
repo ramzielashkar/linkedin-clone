@@ -54,11 +54,32 @@ const getJob = async (req, res) => {
     res.json({result});
 }
 
+// function to edit profile
+const editProfile = async (req, res) => {
+    const {name, email, bio, profile_picture} = req.body;
+    const id = req.user.id;
+    try {
+        const user = await User.findByIdAndUpdate(id,{
+            name, 
+            email,
+            bio,
+            profile_picture
+        });
+        res.json({user});
+    } catch (error) {
+        res.status(400).json({
+            message: err.message,
+        })
+    }
+
+}
+
 
 
 module.exports = {
     applyToJob,
     followCompany,
     search,
-    getJob
+    getJob,
+    editProfile
 }
