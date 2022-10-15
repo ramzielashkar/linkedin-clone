@@ -23,7 +23,15 @@ const jobSchema = new mongoose.Schema({
     },
 
     applications :
-        [applicationSchema]
+        [   {user_id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        details: {
+            type: String,
+            required : 'details are required'
+        },
+    }]
 })
 
 const Job = mongoose.model('Job', jobSchema);
