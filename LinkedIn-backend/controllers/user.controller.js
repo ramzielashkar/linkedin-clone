@@ -46,8 +46,19 @@ const search = async (req, res) => {
     res.json({result});
 } 
 
+// function to get job by name
+const getJob = async (req, res) => {
+    const {name} = req.params;
+    const result = await Job.findOne({name}).populate('company_id');
+    if(!result) return res.json({message: "Job not Found"});
+    res.json({result});
+}
+
+
+
 module.exports = {
     applyToJob,
     followCompany,
-    search
+    search,
+    getJob
 }
