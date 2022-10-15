@@ -24,11 +24,19 @@ const addJob = async (req, res) =>{
 // function to get company jobs
 const getJobs = async (req, res) =>{
     const company_id = req.user.id;
-    const jobs = await Job.find({company_id}).select("+applications");
+    const jobs = await Job.find({company_id});
     res.json(jobs);
+}
+
+// function to get applications related to a job
+const getApplications = async (req, res) => {
+    const {job_id} = req.params;
+    const job = await Job.findOne({id : job_id}).select('applications').populate('applications.user_id').lean();
+    res.json(job);
 }
 
 module.exports = {
     addJob, 
-    getJobs
+    getJobs,
+    getApplications
 }
