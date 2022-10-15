@@ -2,6 +2,8 @@ const User = require("../models/users.model");
 const Job = require("../models/jobs.model");
 const { Application } = require("../models/application.model");
 const Follow = require("../models/follows.model");
+const fs = require("fs");
+const mime = require('mime');
 
 //function to apply to a job
 const applyToJob = async(req, res) => {
@@ -56,23 +58,41 @@ const getJob = async (req, res) => {
 
 // function to edit profile
 const editProfile = async (req, res) => {
-    const {name, email, bio, profile_picture} = req.body;
     const id = req.user.id;
-    try {
+    const {name, email, bio} = req.body;
+    const matches = req.body.profile_picture.match(/^data:([A-Za-z-+/]+);base64,(.+)$/);
+    const response ={};
+    response.type = matches[1];
+    response.data = new Buffer(matches[2], 'base64');
+    const decodedImg = response;
+    const imageBuffer = decodedImg.data;
+    const type = decodedImg.type;
+    const fileName = `${id}.png`;
+    
+    fs.writeFileSync("./public/" + fileName, imageBuffer, 'utf8');
+        try {
         const user = await User.findByIdAndUpdate(id,{
             name, 
             email,
             bio,
-            profile_picture
+            profile_picture: fileName
         });
         res.json({user});
     } catch (error) {
         res.status(400).json({
-            message: err.message,
+            message: error.message,
         })
     }
 
 }
+
+// function to get all jobs
+const getAllJobs = async (req, res) => {
+    const result = await Job.find().populate('company_id');
+    if(!result) return res.json({message: "Job not Found"});
+    res.json({result});
+}
+
 
 
 
@@ -81,5 +101,6 @@ module.exports = {
     followCompany,
     search,
     getJob,
-    editProfile
+    editProfile,
+    getAllJobs
 }
