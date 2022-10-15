@@ -39,7 +39,15 @@ const followCompany = async (req, res) => {
     }
 }
 
+// function to search for jobs
+const search = async (req, res) => {
+    const {job} = req.params;
+    const result = await Job.find({ "type": { "$regex": job, "$options": "i" } }).populate('company_id');
+    res.json({result});
+} 
+
 module.exports = {
     applyToJob,
-    followCompany
+    followCompany,
+    search
 }
