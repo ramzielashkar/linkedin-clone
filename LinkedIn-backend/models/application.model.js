@@ -3,7 +3,7 @@ const User = require('./users.model');
 
 // Creating User Schema
 const applicationSchema = new mongoose.Schema({
-    User_id: {
+    user_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
