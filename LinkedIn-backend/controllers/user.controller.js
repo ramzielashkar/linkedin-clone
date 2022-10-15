@@ -12,7 +12,7 @@ const applyToJob = async(req, res) => {
 
    const application = {
         details,
-        "id" : req.user.id
+        "user_id" : req.user.id
     }
     Job.findById(job_id, (error, result)=> {
         try {
@@ -53,7 +53,7 @@ const search = async (req, res) => {
 // function to get job by name
 const getJob = async (req, res) => {
     const {name} = req.params;
-    const result = await Job.findOne({name}).populate('company_id');
+    const result = await Job.findOne({name}).populate('company_id').select("-applications");
     if(!result) return res.json({message: "Job not Found"});
     res.json({result});
 }
@@ -90,7 +90,7 @@ const editProfile = async (req, res) => {
 
 // function to get all jobs
 const getAllJobs = async (req, res) => {
-    const result = await Job.find().populate('company_id');
+    const result = await Job.find().populate('company_id').select("-applications");
     if(!result) return res.json({message: "Job not Found"});
     res.json({result});
 }
