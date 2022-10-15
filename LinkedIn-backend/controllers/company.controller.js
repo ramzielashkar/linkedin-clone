@@ -24,7 +24,7 @@ const addJob = async (req, res) =>{
 // function to get company jobs
 const getJobs = async (req, res) =>{
     const company_id = req.user.id;
-    const jobs = await Job.find({company_id});
+    const jobs = await Job.find({company_id}).select("+applications");
     res.json(jobs);
 }
 
