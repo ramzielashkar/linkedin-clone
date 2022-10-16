@@ -1,6 +1,8 @@
 import React from 'react'
 import Input from '../components/Input';
 import LandingNav from '../components/LandingNav';
+import landingImg from '../assets/landing.svg'
+
 
 // Landing Page
 const Landing = () => {
@@ -34,6 +36,9 @@ const Landing = () => {
                      </div>
                      <p className='w-4/5 text-gray-600 text-lg font-normal text-center'>Already on LinkedIn? <a className='font-bold cursor-pointer text-purple-600 hover:underline'>Sign in</a></p>
                 </form>
+            </div>
+            <div className='mr-2 mb-4'>
+                <img src={landingImg} alt="" />
             </div>
         </div>
 
