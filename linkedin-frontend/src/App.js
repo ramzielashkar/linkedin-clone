@@ -5,6 +5,8 @@ import Login from './pages/Login';
 import User from './pages/User';
 import UserFeed from './pages/UserFeed';
 import Profile from './pages/Profile';
+import Company from './pages/Company';
+import CompanyFeed from './pages/CompanyFeed';
 function App() {
   return (
     <>
@@ -36,6 +38,17 @@ function App() {
           }>
              </Route>
 
+        </Route>
+
+        <Route path='/company' element = {
+          <Company /> 
+        }>
+          <Route path='feed' element ={
+            <CompanyFeed/>
+          }>
+
+          </Route>
+          
         </Route>
       </Routes>
     </BrowserRouter>
