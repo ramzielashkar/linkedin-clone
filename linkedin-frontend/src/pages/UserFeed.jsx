@@ -1,11 +1,16 @@
 import cover from '../assets/cover.PNG'
 import profile from '../assets/profile.jpg'
 import JobCard from '../components/JobCard';
+import LandingNav from "../components/LandingNav";
 
 const UserFeed = () => {
+    
     return (
-        <section className="bg-background flex px-56 py-4">
-            <div className="flex flex-col bg-white rounded-xl pb-4 w-1/5 mr-8">
+        <>
+        <LandingNav 
+            path={'feed'}/>
+        <section className="bg-background flex px-56 py-4 h-screen">
+            <div className="flex flex-col bg-white rounded-xl pb-4 w-1/5 mr-8 h-48">
                 <div className=" relative flex rounded-xl h-18">
                     <img className='rounded-t-xl' src={cover} alt=""/>
                     <div className="absolute rounded-full border left-24 top-7">
@@ -30,6 +35,7 @@ const UserFeed = () => {
                 </div>
             </div>
         </section>
+        </>
     );
 };
 
