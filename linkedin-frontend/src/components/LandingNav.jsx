@@ -73,6 +73,22 @@ const LandingNav = ({path})=>{
             </nav>
             </>
         );
+    }else if(path==='company'){
+        return(
+            <>
+            <nav className= "flex px-56 py-1 items-center">
+                <div>
+                    <img src={logo} alt="" width={35} height={35}/>
+                </div>
+                <div className='flex justify-end gap-9 w-3/4'>
+                    <div className='flex flex-col items-center cursor-pointer px-4 border-b-2 border-black' onClick={openHome}>
+                        <img src={home} alt="" width={25} height= {20} />
+                        <p className='text-sm mt-1'>Home</p>
+                    </div>
+                </div>
+            </nav>
+            </>
+        );
     }
 }
 
