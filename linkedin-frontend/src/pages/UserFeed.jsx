@@ -1,5 +1,7 @@
 import cover from '../assets/cover.PNG'
 import profile from '../assets/profile.jpg'
+import JobCard from '../components/JobCard';
+
 const UserFeed = () => {
     return (
         <section className="bg-background flex px-56 py-4">
@@ -20,7 +22,12 @@ const UserFeed = () => {
                 <p className='text-xl font-semibold '>Jobs For You</p>
                 <p className='opacity-80 text-base mb-10'>Because you expressed interest in remote work</p>
 
-                <div></div>
+                <div className='flex flex-col'>
+                    <JobCard />
+                    <JobCard />
+                    <JobCard />
+
+                </div>
             </div>
         </section>
     );
