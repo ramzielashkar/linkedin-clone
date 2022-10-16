@@ -1,5 +1,5 @@
 import cover from '../assets/cover.PNG'
-const JobCard = () => {
+const JobCard = ({onClick}) => {
     return(
        <div className="flex w-128 border-b-2 pb-4 mb-4">
         <div className='flex flex-col items-center align-middle justify-center mr-6'>
@@ -12,7 +12,7 @@ const JobCard = () => {
         </div>
         <div className='flex flex-col gap-10'>
             <button className='bg-primary border-none text-white rounded-full p-1'>Follow</button>
-            <p className='text-sm font-semibold cursor-pointer mr-2 text-primary text-end'>Easy Apply</p>
+            <p className='text-sm font-semibold cursor-pointer mr-2 text-primary text-end' onClick = {onClick}>Easy Apply</p>
         </div>
        </div>
     );
