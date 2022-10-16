@@ -1,4 +1,4 @@
-const Input = ({type, placeholder, onChange, path, title, pattern}) => {
+const Input = ({type, placeholder, onChange, path, title, pattern, value}) => {
     if(path=='sigin'){
     return(
         <>
@@ -10,7 +10,7 @@ const Input = ({type, placeholder, onChange, path, title, pattern}) => {
     }else{
         return(
             <>
-                <input className="px-3 rounded-sm py-3 border w-full border-black border-opacity-90 text-lg text-black mb-4" type={type} placeholder={placeholder} onChange = {onChange}></input>
+                <input className="px-3 rounded-sm py-3 border w-full border-black border-opacity-90 text-lg text-black mb-4" type={type} placeholder={placeholder} value ={value} onChange = {onChange}></input>
             </>
         );
     }
