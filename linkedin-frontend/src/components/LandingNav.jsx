@@ -19,11 +19,11 @@ const LandingNav = ({path})=>{
                 </div>
                 <input type="text" placeholder='Search' className='ml-2 px-4 rounded-sm py-1 border bg-secondary w-1/4' />
                 <div className='flex justify-end gap-9 w-1/2'>
-                    <div className='flex flex-col items-center cursor-pointer'>
+                    <div className='flex flex-col items-center cursor-pointer border-b-2 border-black px-4'>
                         <img src={home} alt="" width={25} height= {20} />
                         <p className='text-sm mt-1'>Home</p>
                     </div>
-                    <div className='flex flex-col items-center cursor-pointer'>
+                    <div className='flex flex-col items-center cursor-pointer px-4'>
                         <img src={profile} alt="" width={25} height= {20} />
                         <p className='text-sm mt-1'>Me</p>
                     </div>
