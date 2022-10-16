@@ -1,11 +1,21 @@
 import React from 'react'
 import Input from '../components/Input';
 import LandingNav from '../components/LandingNav';
-import landingImg from '../assets/landing.svg'
+import landingImg from '../assets/landing.svg';
+import { useNavigate } from "react-router-dom";
+
+
 
 
 // Landing Page
 const Landing = () => {
+    const navigate = useNavigate();
+
+    // function to navigate to login page
+    const loginPage = () =>{
+        navigate('/login');
+    }
+
   return (
     <>
         <LandingNav
@@ -18,10 +28,12 @@ const Landing = () => {
                 <h1 className='text-6xl text-landing font-extralight mb-10'>professional community</h1>
                 <form className='flex flex-col w-3/4'>
                     <Input
+                    path ={'sigin'}
                     type = {'email'}
                     placeholder = {'Email'} 
                     />
                     <Input
+                    path ={'sigin'}
                     type = {'password'}
                     placeholder = {'Password (8+ characters)'} 
                     />
@@ -34,7 +46,7 @@ const Landing = () => {
                         <p className='mx-6 text-gray-500 text-lg text-bold'>or</p>
                         <div className='w-48 border-gray-400 border bg-gray-400'></div>
                      </div>
-                     <p className='w-4/5 text-gray-600 text-lg font-normal text-center'>Already on LinkedIn? <a className='font-bold cursor-pointer text-purple-600 hover:underline'>Sign in</a></p>
+                     <p className='w-4/5 text-gray-600 text-lg font-normal text-center'>Already on LinkedIn? <a onClick ={loginPage} className='font-bold cursor-pointer text-purple-600 hover:underline'>Sign in</a></p>
                 </form>
             </div>
             <div className='mr-2 mb-4'>
