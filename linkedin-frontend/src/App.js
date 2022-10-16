@@ -1,6 +1,7 @@
 import './index.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing from './pages/landing';
+import Login from './pages/Login';
 function App() {
   return (
     <>
@@ -9,6 +10,13 @@ function App() {
         <Route path='/' element ={
           <>
             <Landing/>
+          </>
+        }>
+        </Route>
+
+        <Route path='/login' element = {
+          <>
+          <Login/>
           </>
         }>
 
