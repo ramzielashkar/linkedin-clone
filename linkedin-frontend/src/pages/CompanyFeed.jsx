@@ -4,13 +4,19 @@ import cover from '../assets/cover.PNG'
 import profile from '../assets/profile.jpg'
 import JobCard from '../components/JobCard';
 import AddJob from "./AddJob";
+import { useNavigate } from "react-router-dom";
+
 const CompanyFeed = () => {
+    const navigate = useNavigate();
     const [showAdd, setShowAdd] = useState(false);
     const openAddJob = ()=>{
         setShowAdd(true);
     }
     const closeAddJob = ()=>{
         setShowAdd(false);
+    }
+    const seeApplicants = () => {
+        navigate('../applicants');
     }
     return(
         <>
@@ -37,7 +43,8 @@ const CompanyFeed = () => {
                 </div>
                 
                 <div className='flex flex-col'>
-                    <JobCard path={'company'} />
+                    <JobCard path={'company'}
+                    onClick = {seeApplicants} />
                     <JobCard />
                     <JobCard />             
 
