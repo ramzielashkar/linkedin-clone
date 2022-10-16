@@ -6,7 +6,7 @@ const User = () =>{
         <>
             <LandingNav 
             path={'feed'}/>
-            <Outlet/>
+            <Outlet />
         </>
     );
 };
