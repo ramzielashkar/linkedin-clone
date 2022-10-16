@@ -16,8 +16,8 @@ const UserFeed = () => {
         <>
         <LandingNav 
             path={'feed'}/>
-        <section className="bg-background flex px-56 py-4 h-screen">
-            <div className="flex flex-col bg-white rounded-xl pb-4 w-1/5 mr-8 h-48">
+        <section className="bg-background flex px-56 py-4 h-full">
+            <div className="flex flex-col bg-white rounded-xl pb-4 w-1/5 mr-8 h-48 mb-128">
                 <div className=" relative flex rounded-xl h-18">
                     <img className='rounded-t-xl' src={cover} alt=""/>
                     <div className="absolute rounded-full border left-24 top-7">
@@ -38,7 +38,8 @@ const UserFeed = () => {
                     <JobCard 
                     onClick = {openApp}/>
                     <JobCard />
-                    <JobCard />
+                    <JobCard />             
+
                 </div>
             </div>
         </section>
