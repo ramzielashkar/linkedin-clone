@@ -1,7 +1,7 @@
 import cover from '../assets/cover.PNG'
 const JobCard = () => {
     return(
-       <div className="flex w-128 border-b-2 pb-4">
+       <div className="flex w-128 border-b-2 pb-4 mb-4">
         <div className='flex flex-col items-center align-middle justify-center mr-6'>
             <img src={cover} alt="" width={60} height={100}/>
         </div>
