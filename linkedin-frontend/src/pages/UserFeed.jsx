@@ -1,10 +1,17 @@
+import { useState } from 'react';
 import cover from '../assets/cover.PNG'
 import profile from '../assets/profile.jpg'
 import JobCard from '../components/JobCard';
 import LandingNav from "../components/LandingNav";
-
+import Application from './Application';
 const UserFeed = () => {
-    
+    const openApp = () =>{
+        setShowApplication(true);
+    }
+    const closeApp = () =>{
+        setShowApplication(false);
+    }
+    const [showApplication, setShowApplication] = useState(false);
     return (
         <>
         <LandingNav 
@@ -28,13 +35,16 @@ const UserFeed = () => {
                 <p className='opacity-80 text-base mb-10'>Because you expressed interest in remote work</p>
 
                 <div className='flex flex-col'>
+                    <JobCard 
+                    onClick = {openApp}/>
                     <JobCard />
                     <JobCard />
-                    <JobCard />
-
                 </div>
             </div>
         </section>
+        <Application 
+        open= {showApplication}
+        onClose ={closeApp} />
         </>
     );
 };
