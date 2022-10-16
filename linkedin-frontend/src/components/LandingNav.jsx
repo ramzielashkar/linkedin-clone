@@ -1,7 +1,13 @@
 import logo from '../assets/logo.svg';
 import home from '../assets/home.png';
 import profile from '../assets/profile.jpg'
+import { useState } from 'react';
+import SearchField from './SearchField';
 const LandingNav = ({path})=>{
+    const [search, setSearch] = useState(false);
+    const searchJob = () =>{
+        setSearch(!search);
+    }
     if(path==='landing'){
     return(
         <nav className= "flex px-56 py-6 items-center">
@@ -13,11 +19,12 @@ const LandingNav = ({path})=>{
     );
     }else if(path==='feed'){
         return(
+            <>
             <nav className= "flex px-56 py-1 items-center">
                 <div>
                     <img src={logo} alt="" width={35} height={35}/>
                 </div>
-                <input type="text" placeholder='Search' className='ml-2 px-4 rounded-sm py-1 border bg-secondary w-1/4' />
+                <input type="text" placeholder='Search' className='ml-2 px-4 rounded-sm py-1 border bg-secondary w-1/4' onFocus={searchJob} />
                 <div className='flex justify-end gap-9 w-1/2'>
                     <div className='flex flex-col items-center cursor-pointer border-b-2 border-black px-4'>
                         <img src={home} alt="" width={25} height= {20} />
@@ -28,7 +35,11 @@ const LandingNav = ({path})=>{
                         <p className='text-sm mt-1'>Me</p>
                     </div>
                 </div>
+                <SearchField 
+                open ={search}
+                 />
             </nav>
+            </>
         );
     }
 }
