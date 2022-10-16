@@ -4,16 +4,27 @@ import profile from '../assets/profile.jpg'
 import edit from '../assets/edit.png'
 import EditProfile from "./EditProfile";
 import { useState } from "react";
+import ChangeProfile from "./ChangeProfile";
 
 
 const Profile = () => {
     const [showEdit, setShowEdit] = useState(false);
+    const [showEditPic, setShowEditPic] = useState(false);
+
     const openEdit = () => {
         setShowEdit(true);
     }
     const closeEdit = () => {
         setShowEdit(false);
     }
+
+    const openEditPic = () => {
+        setShowEditPic(true);
+    }
+    const closeEditPic = () => {
+        setShowEditPic(false);
+    }
+
     return(
         <>
          <LandingNav 
@@ -22,7 +33,7 @@ const Profile = () => {
                 <div className="flex flex-col w-2/3 rounded-xl bg-white h-128">
                     <div className="relative rounded-t-xl">
                         <img src={cover} height={25} className="rounded-t-xl"/>
-                        <div className="absolute rounded-full border left-8 top-32 cursor-pointer">
+                        <div className="absolute rounded-full border left-8 top-32 cursor-pointer" onClick={openEditPic}>
                             <img src={profile} height={150} width={150} className="rounded-full" />
                         </div>
                     </div>
@@ -42,6 +53,11 @@ const Profile = () => {
             <EditProfile 
             open = {showEdit}
             onClose = {closeEdit} />
+
+            <ChangeProfile
+            open = {showEditPic}
+            onClose = {closeEditPic} />
+
         </>
     );
 
