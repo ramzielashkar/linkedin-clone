@@ -3,7 +3,15 @@ import { useState } from 'react';
 import cover from '../assets/cover.PNG'
 import profile from '../assets/profile.jpg'
 import JobCard from '../components/JobCard';
+import AddJob from "./AddJob";
 const CompanyFeed = () => {
+    const [showAdd, setShowAdd] = useState(false);
+    const openAddJob = ()=>{
+        setShowAdd(true);
+    }
+    const closeAddJob = ()=>{
+        setShowAdd(false);
+    }
     return(
         <>
             <LandingNav 
@@ -25,7 +33,7 @@ const CompanyFeed = () => {
             <div className="bg-white rounded-xl flex flex-col py-6 px-4">
                 <div className="flex justify-between">
                 <p className='text-xl font-semibold mb-10'>Your Jobs</p>
-                <button className="bg-primary border-none text-white rounded-full p-1 w-36 h-10 text-center cursor-pointer">Add Job</button>
+                <button className="bg-primary border-none text-white rounded-full p-1 w-36 h-10 text-center cursor-pointer" onClick={openAddJob}>Add Job</button>
                 </div>
                 
                 <div className='flex flex-col'>
@@ -36,6 +44,10 @@ const CompanyFeed = () => {
                 </div>
             </div>
         </section>
+        <AddJob 
+        open ={showAdd}
+        onClose = {closeAddJob}
+        />
         </>
     );
 }
