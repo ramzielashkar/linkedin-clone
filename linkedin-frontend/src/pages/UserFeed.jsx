@@ -36,9 +36,10 @@ const UserFeed = () => {
 
                 <div className='flex flex-col'>
                     <JobCard 
-                    onClick = {openApp}/>
-                    <JobCard />
-                    <JobCard />             
+                    onClick = {openApp}
+                    path = {'user'}/>
+                    <JobCard path = {'user'} />
+                    <JobCard path = {'user'}/>             
 
                 </div>
             </div>
