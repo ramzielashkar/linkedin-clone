@@ -7,6 +7,8 @@ import UserFeed from './pages/UserFeed';
 import Profile from './pages/Profile';
 import Company from './pages/Company';
 import CompanyFeed from './pages/CompanyFeed';
+import AddJob from './pages/AddJob';
+import Applicants from './pages/Applicants';
 function App() {
   return (
     <>
@@ -45,6 +47,11 @@ function App() {
         }>
           <Route path='feed' element ={
             <CompanyFeed/>
+          }>
+
+          </Route>
+          <Route path='applicants' element ={
+            <Applicants />
           }>
 
           </Route>
