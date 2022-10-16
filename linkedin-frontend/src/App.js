@@ -4,6 +4,7 @@ import Landing from './pages/landing';
 import Login from './pages/Login';
 import User from './pages/User';
 import UserFeed from './pages/UserFeed';
+import Profile from './pages/Profile';
 function App() {
   return (
     <>
@@ -28,6 +29,10 @@ function App() {
         }>
           <Route path='feed' element = {
             <UserFeed/>
+          }>
+             </Route>
+            <Route path='profile' element = {
+            <Profile/>
           }>
              </Route>
 
