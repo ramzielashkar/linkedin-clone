@@ -36,6 +36,8 @@ const Landing = () => {
                     path ={'sigin'}
                     type = {'password'}
                     placeholder = {'Password (8+ characters)'} 
+                    title = 'Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters'
+                    pattern={'(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'}
                     />
                     <p className='w-3/4 text-base font-normal mb-4'>By clicking Agree & Join, you agree to the 
                     LinkedIn <a className='text-primary font-bold' href=''>User Agreement</a>, <a className='text-primary font-bold' href=''>Privacy Policy</a>,
