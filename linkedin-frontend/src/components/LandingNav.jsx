@@ -13,7 +13,7 @@ const LandingNav = ({path})=>{
     );
     }else if(path==='feed'){
         return(
-            <nav className= "flex px-56 py-3 items-center">
+            <nav className= "flex px-56 py-1 items-center">
                 <div>
                     <img src={logo} alt="" width={35} height={35}/>
                 </div>
