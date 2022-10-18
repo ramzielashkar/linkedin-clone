@@ -26,6 +26,7 @@ const login = async (req, res)=>{
 // function to register user
 const signup = async (req, res)=>{
     const {name, email, password, type} = req.body;
+    console.log(name, email, password, type);
     try{
         const user = new User();
         user.name = name;

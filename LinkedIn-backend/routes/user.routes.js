@@ -8,6 +8,6 @@ router.post('/apply/', authMiddleware, userMiddleware, applyToJob);
 router.get('/follow/:name', authMiddleware, userMiddleware, followCompany);
 router.get('/search/:job', authMiddleware, userMiddleware, search);
 router.get('/job/:name', authMiddleware, userMiddleware, getJob);
-router.get('/job/', authMiddleware, userMiddleware, getAllJobs);
+router.get('/job', authMiddleware, userMiddleware, getAllJobs);
 router.put('/profile/', authMiddleware, userMiddleware, editProfile);
 module.exports = router;
