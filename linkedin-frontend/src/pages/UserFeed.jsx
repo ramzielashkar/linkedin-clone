@@ -4,6 +4,8 @@ import profile from '../assets/profile.jpg'
 import JobCard from '../components/JobCard';
 import LandingNav from "../components/LandingNav";
 import Application from './Application';
+import { useJobs } from '../query/UserJobs/userJobs';
+
 const UserFeed = () => {
     const openApp = () =>{
         setShowApplication(true);
@@ -12,6 +14,10 @@ const UserFeed = () => {
         setShowApplication(false);
     }
     const [showApplication, setShowApplication] = useState(false);
+    const { data: allJobs , isLoading: isLoadingAllJobs} = useJobs({
+        enabled:true
+    })
+    if(isLoadingAllJobs)return(null);
     return (
         <>
         <LandingNav 
@@ -35,12 +41,18 @@ const UserFeed = () => {
                 <p className='opacity-80 text-base mb-10'>Because you expressed interest in remote work</p>
 
                 <div className='flex flex-col'>
-                    <JobCard 
-                    onClick = {openApp}
-                    path = {'user'}/>
-                    <JobCard path = {'user'} />
-                    <JobCard path = {'user'}/>             
-
+                    {allJobs?.result?.map((job)=>{
+                        return(
+                         <JobCard 
+                         name={job.name}
+                         type={job.type}
+                         description={job.description}
+                         company={job.company_id.name}
+                         onClick = {openApp}
+                         path = {'user'}/>
+                        );
+                    })}
+                   
                 </div>
             </div>
         </section>

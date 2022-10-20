@@ -17,9 +17,8 @@ export const queryClient = new QueryClient();
 
 function App() {
   return (
-    <>
     <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen>
+      <ReactQueryDevtools initialIsOpen/>
     <BrowserRouter>
       <Routes>
         <Route path='/' element ={
@@ -67,9 +66,7 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
-    </ReactQueryDevtools>
     </QueryClientProvider>
-    </>
   );
 }
 

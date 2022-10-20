@@ -5,10 +5,18 @@ import profile from '../assets/profile.jpg'
 import JobCard from '../components/JobCard';
 import AddJob from "./AddJob";
 import { useNavigate } from "react-router-dom";
+import { useCompanyJobs } from "../query/CompanyJobs/companyJobs";
+import { QueryClient, useQueryClient } from "@tanstack/react-query";
 
 const CompanyFeed = () => {
+    const queryClient = useQueryClient();
+    const currentUser = queryClient.getQueryData(['CurrentUser']);
+    console.log(queryClient.getQueryData(['CurrentUser']));
     const navigate = useNavigate();
     const [showAdd, setShowAdd] = useState(false);
+    const { data: allCompanyJobs , isLoading: isLoadingAllJobs} = useCompanyJobs({
+        enabled:true
+    })
     const openAddJob = ()=>{
         setShowAdd(true);
     }
@@ -18,6 +26,8 @@ const CompanyFeed = () => {
     const seeApplicants = () => {
         navigate('../applicants');
     }
+
+    if(isLoadingAllJobs) return null;
     return(
         <>
             <LandingNav 
@@ -43,11 +53,19 @@ const CompanyFeed = () => {
                 </div>
                 
                 <div className='flex flex-col'>
-                    <JobCard path={'company'}
-                    onClick = {seeApplicants} />
-                    <JobCard />
-                    <JobCard />             
-
+                    {allCompanyJobs?.map((job)=>{
+                        console.log(job);
+                        return(
+                         <JobCard 
+                         path={'company'}
+                         name={job.name}
+                         type={job.type}
+                         description={job.description}
+                         company={job.company_id.name}
+                         onClick = {seeApplicants}
+                         />
+                        );
+                    })}          
                 </div>
             </div>
         </section>

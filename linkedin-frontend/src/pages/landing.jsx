@@ -29,6 +29,7 @@ const Landing = () => {
         queryClient.invalidateQueries('create');
       }
     })
+
     const loginPage = () =>{
         navigate('/login');
     }
